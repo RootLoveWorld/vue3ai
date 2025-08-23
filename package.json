@@ -1,0 +1,33 @@
+{
+  "name": "vue3ai",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile": "tsc",
+    "compile:watch": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@langchain/community": "0.3.49",
+    "@langchain/core": "0.3.66",
+    "@langchain/ollama": "^0.2.3",
+    "d3-dsv": "^2.0.0",
+    "js-yaml": "^4.1.0",
+    "langchain": "0.3.30",
+    "pg": "8.16.3",
+    "remark": "^15.0.1",
+    "remark-frontmatter": "^5.0.0",
+    "remark-parse": "^11.0.0",
+    "zod": "^4.0.17"
+  },
+  "devDependencies": {
+    "@types/node": "24.2.1",
+    "@types/pg": "8.15.5",
+    "typescript": "5.8.3"
+  }
+}
