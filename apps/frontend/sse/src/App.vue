@@ -3,6 +3,8 @@ import Sse from './components/Sse.vue'
 </script>
 
 <template>
+  <!--https://tailwindcss.com/-->
+  <div class="miracle-btn miracle-btn-red">I am Miracle</div>
   <Sse/>
 </template>
 

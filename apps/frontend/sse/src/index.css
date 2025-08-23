@@ -1,0 +1,24 @@
+@import 'tailwindcss'
+
+:root {
+    --color-primary:#002234;
+}
+
+@theme{
+    --color-primary-red:#0022ff;
+    --color-primary-green:#00ff34;
+    --color-primary-blue:#ff2234;
+}
+
+@utility miracle-btn-*{
+    background-color: --value(--color-primary-*);
+}
+
+/* @utility miracle-btn{
+        @apply bg-blue-500 w-[200px] h-[100px] flex justify-center items-center text-red-600;
+    } */
+
+
+.miracle-btn {
+    @apply bg-blue-500 w-[200px] h-[100px] flex justify-center items-center text-red-600;
+}
