@@ -33,7 +33,7 @@ const reconnect = () => {
   close();
   useSSE({
     url: 'http://localhost:3000/sse',
-    autoReconnect: true
+    autoReconnect: false
   });
 };
 </script>
