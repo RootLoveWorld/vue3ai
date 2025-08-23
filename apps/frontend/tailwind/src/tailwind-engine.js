@@ -1,8 +1,15 @@
 // 1. define the mapping from class names to styles
 const utilities = {
     'bg-purple':{
-        'background-color':'purple'
-    }
+        'background-color':'purple',
+    },
+    'text-white':{
+        'color':'white',
+    },
+    'p-2':{
+        'padding':'1rem'
+    },
+    
 }
 
 // 2. define the function to generate the styles
