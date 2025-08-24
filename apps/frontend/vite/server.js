@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const esbuild = require('esbuild');
 const fs = require('fs');
 
 
@@ -13,7 +14,8 @@ app.get('/',(req,res,next) =>{
 
 
 // 需要注意 express 版本
-app.get(/^\/(.*)\.js$/,(req,res)=>{
+app.get(/^\/(.*)\.ts$/,async (req,res)=>{
+    try{
     const reqPath = req.path;
     const file = fs.readFileSync(path.resolve(__dirname,`.${reqPath}`),'utf-8');
 
@@ -22,11 +24,22 @@ app.get(/^\/(.*)\.js$/,(req,res)=>{
     // 1. 编译处理（esbuild\swc\babel\rollup）
     // 2. 插件处理
     // 3. 产物处理、压缩、混淆
+    const result = await esbuild.transform(file,{
+        loader:'js',
+        minify:true,
+        format:'esm',
+        target:'es2015'
+    })
+    console.log(result);
 
-
+    
 
     res.type('js')
-    res.send(file);
+    res.send(result.code); //file
+    }catch(err){
+        console.log(err);
+        res.status(500).send('Server Error')
+    }
    // res.send('Miracle Hello')
 })
  
