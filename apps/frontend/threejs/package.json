@@ -1,0 +1,28 @@
+{
+  "name": "threejs-vue3-wasm-particles",
+  "version": "1.0.0",
+  "description": "Three.js + Vue 3 + WebAssembly Particle System Demo",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "build:wasm": "emcc src/wasm/particles.c -o public/particles.js -s WASM=1 -s EXPORTED_RUNTIME_METHODS=['ccall','cwrap'] -s EXPORTED_FUNCTIONS=['_malloc','_free'] --no-entry",
+    "preview": "vite preview",
+    "type-check": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "vue": "^3.4.0",
+    "three": "^0.160.0",
+    "@types/three": "^0.160.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.0",
+    "typescript": "^5.3.0",
+    "vue-tsc": "^1.8.0",
+    "vite": "^5.0.0",
+    "vite-plugin-wasm": "^3.3.0"
+  },
+  "keywords": ["threejs", "vue3", "webassembly", "particles", "webgl"],
+  "author": "",
+  "license": "MIT"
+}
