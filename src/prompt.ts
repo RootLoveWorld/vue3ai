@@ -20,17 +20,15 @@ const chatOllama = new ChatOllama(
 
 
 const app = createServer(async (req, res) => {
-    res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
-    
     try {
         const aiRes = await chatOllama.invoke(
             [
                 ['system','You are a helpful assistant.'],
-            new HumanMessage('你好，我是一名前端开发,正在学习LLM模型。请你介绍一下自己？'),    
+            new HumanMessage('我是一名创意前端,正在学习LLM模型。请你介绍一下自己？'),    
             ]
         )
 
-
+        res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8' });
         res.end(aiRes.content)
     } catch (error) {
         res.writeHead(500, { 'Content-Type': 'text/plain; charset=utf-8' });
