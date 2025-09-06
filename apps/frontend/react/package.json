@@ -26,14 +26,17 @@
     "@emotion/react": "^11.0.0",
     "@emotion/styled": "^11.0.0",
     "react-image-gallery":"1.4.0",
-    "react-viewer":"3.2.2"
+    "react-viewer":"3.2.2",
+    "react-spring":"^10.0.1",
+    "gsap":"3.13.0",
+    "@gsap/react":"2.1.2",
+    "echarts":"^6.0.0"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@types/react-router-dom": "^5.0.0",
     "@types/styled-components": "^5.0.0",
-    "@types/pdfjs-dist": "^2.10.378",
     "@vitejs/plugin-react": "^4.0.0",
     "typescript": "~5.8.3",
     "vite": "^7.1.2",

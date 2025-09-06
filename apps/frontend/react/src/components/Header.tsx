@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import { useI18n } from '../contexts/I18nContext';
 import { useTranslation } from 'react-i18next';
@@ -7,14 +7,8 @@ const Header: React.FC = () => {
   const { themes, currentTheme, setTheme, createCustomTheme } = useTheme();
   const { language, changeLanguage } = useI18n();
   const { t } = useTranslation();
-
-  const handleThemeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setTheme(e.target.value);
-  };
-
-  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    changeLanguage(e.target.value);
-  };
+  const [showThemeDropdown, setShowThemeDropdown] = useState(false);
+  const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
 
   const handleLogout = () => {
     // Remove auth token and redirect to login
@@ -27,20 +21,73 @@ const Header: React.FC = () => {
       <div className="header-content">
         <h1>{t('common.appName', 'React App')}</h1>
         <div className="header-controls">
-          <select value={currentTheme.name} onChange={handleThemeChange}>
-            {themes.map(theme => (
-              <option key={theme.name} value={theme.name}>
-                {theme.name.charAt(0).toUpperCase() + theme.name.slice(1)}
-              </option>
-            ))}
-          </select>
+          {/* Theme Switcher */}
+          <div className="dropdown">
+            <button 
+              className="dropdown-button"
+              onClick={() => {
+                setShowThemeDropdown(!showThemeDropdown);
+                setShowLanguageDropdown(false);
+              }}
+            >
+              {currentTheme.name.charAt(0).toUpperCase() + currentTheme.name.slice(1)}
+            </button>
+            {showThemeDropdown && (
+              <div className="dropdown-menu">
+                {themes.map(theme => (
+                  <button
+                    key={theme.name}
+                    className={`dropdown-item ${currentTheme.name === theme.name ? 'active' : ''}`}
+                    onClick={() => {
+                      setTheme(theme.name);
+                      setShowThemeDropdown(false);
+                    }}
+                  >
+                    {theme.name.charAt(0).toUpperCase() + theme.name.slice(1)}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
           
-          <select value={language} onChange={handleLanguageChange}>
-            <option value="en">English</option>
-            <option value="zh">中文</option>
-          </select>
+          {/* Language Switcher */}
+          <div className="dropdown">
+            <button 
+              className="dropdown-button"
+              onClick={() => {
+                setShowLanguageDropdown(!showLanguageDropdown);
+                setShowThemeDropdown(false);
+              }}
+            >
+              {language === 'en' ? 'English' : '中文'}
+            </button>
+            {showLanguageDropdown && (
+              <div className="dropdown-menu">
+                <button
+                  className={`dropdown-item ${language === 'en' ? 'active' : ''}`}
+                  onClick={() => {
+                    changeLanguage('en');
+                    setShowLanguageDropdown(false);
+                  }}
+                >
+                  English
+                </button>
+                <button
+                  className={`dropdown-item ${language === 'zh' ? 'active' : ''}`}
+                  onClick={() => {
+                    changeLanguage('zh');
+                    setShowLanguageDropdown(false);
+                  }}
+                >
+                  中文
+                </button>
+              </div>
+            )}
+          </div>
           
-          <button onClick={handleLogout}>{t('common.logout', 'Logout')}</button>
+          <button className="logout-button" onClick={handleLogout}>
+            {t('common.logout', 'Logout')}
+          </button>
         </div>
       </div>
     </header>

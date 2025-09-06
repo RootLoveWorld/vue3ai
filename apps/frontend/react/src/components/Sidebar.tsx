@@ -11,6 +11,8 @@ const Sidebar: React.FC = () => {
     { path: '/users', label: t('users.title', 'Users') },
     { path: '/organizations', label: t('organizations.title', 'Organizations') },
     { path: '/settings', label: t('settings.title', 'Settings') },
+    { path: '/gsap-demo', label: 'GSAP Examples' },
+    { path: '/gsap-showcase', label: 'GSAP Showcase' },
   ];
 
   return (
