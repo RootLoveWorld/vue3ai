@@ -1,0 +1,195 @@
+.document-preview {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.preview-header h3 {
+  margin-top: 0;
+  color: var(--text-color);
+}
+
+.preview-header p {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.preview-content {
+  margin-top: 1rem;
+}
+
+.image-preview-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  background-color: #f5f5f5;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.image-preview-container img {
+  max-width: none;
+  max-height: none;
+  transition: transform 0.2s ease;
+}
+
+.image-controls {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 4px;
+  padding: 8px;
+  display: flex;
+  gap: 5px;
+}
+
+.image-controls button {
+  background: none;
+  border: 1px solid white;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 4px 8px;
+  font-size: 14px;
+}
+
+.image-controls button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.image-preview {
+  text-align: center;
+}
+
+.image-preview img {
+  max-width: 100%;
+  height: auto;
+}
+
+.pdf-preview,
+.document-preview,
+.text-preview,
+.csv-preview,
+.markdown-preview,
+.office-document-preview,
+.default-preview {
+  text-align: center;
+  padding: 2rem;
+  border: 1px dashed #ccc;
+  border-radius: 4px;
+}
+
+.document-icon {
+  font-size: 4rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.text-preview pre {
+  text-align: left;
+  white-space: pre-wrap;
+  background-color: #f5f5f5;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.pdf-navigation {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pdf-navigation button {
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pdf-navigation button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.loading,
+.error {
+  padding: 2rem;
+  text-align: center;
+}
+
+.markdown-preview {
+  text-align: left;
+}
+
+.markdown-preview h1,
+.markdown-preview h2,
+.markdown-preview h3 {
+  color: var(--text-color);
+}
+
+.markdown-preview a {
+  color: var(--primary-color);
+}
+
+.markdown-preview code {
+  background-color: #f5f5f5;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+.markdown-preview pre {
+  background-color: #f5f5f5;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.csv-preview table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.csv-preview th,
+.csv-preview td {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+}
+
+.csv-preview th {
+  background-color: #f5f5f5;
+}
+
+.office-document-preview table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.office-document-preview th,
+.office-document-preview td {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.office-document-preview th {
+  background-color: #f5f5f5;
+}
+
+.document-warning {
+  color: #ff9800;
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}

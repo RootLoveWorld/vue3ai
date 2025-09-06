@@ -1,0 +1,55 @@
+.settings-page {
+  padding: 20px;
+}
+
+.settings-page h2 {
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+}
+
+.settings-section {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 1.5rem;
+}
+
+.settings-section h3 {
+  margin-top: 0;
+  color: var(--text-color);
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.setting-item {
+  margin-bottom: 1rem;
+}
+
+.setting-item label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.setting-item input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+.setting-item select,
+.setting-item input[type="text"],
+.setting-item textarea {
+  width: 100%;
+  max-width: 300px;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.setting-item select:focus,
+.setting-item input[type="text"]:focus,
+.setting-item textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
