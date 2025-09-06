@@ -1,41 +1,41 @@
 
 <template>
-  <div class="sse-container">
-    <h2>SSE实时数据监控</h2>
-    <div class="status">连接状态: {{ status }}</div>
-    <div class="data-box">
-      <div v-if="data">
-        <p>时间: {{ data.timestamp }}</p>
-        <p>随机值: {{ data.value.toFixed(2) }}</p>
+  <div>
+    <n-card :title="t('sse.title')">
+      <n-input v-model:value="message" type="textarea" :placeholder="t('sse.enterMessage')" />
+      <n-button @click="sendMessage" style="margin-top: 10px">{{ t('sse.send') }}</n-button>
+      <div style="margin-top: 20px">
+        <n-card v-for="msg in messages" :key="msg.id" :title="msg.sender">
+          {{ msg.content }}
+        </n-card>
       </div>
-      <div v-else>等待数据...</div>
-    </div>
-    <button @click="reconnect" v-if="status === 'CLOSED'">重新连接</button>
+    </n-card>
   </div>
 </template>
 
-<script lang="ts" setup>
-import { useSSE } from '../utils/sse';
+<script setup lang="ts">
+import { ref } from 'vue'
+import { NCard, NInput, NButton } from 'naive-ui'
+import { useI18n } from '../composables/useI18n'
 
-const { data, status, close } = useSSE({
-  url: 'http://localhost:3000/sse',
-  autoReconnect: true,
-  retryInterval: 3000,
-  onMessage: (newData) => {
-    console.log('收到新数据:', newData);
-  },
-  onError: (err) => {
-    console.error('SSE连接错误:', err);
+const { t } = useI18n()
+
+const message = ref('')
+const messages = ref([
+  { id: 1, sender: 'User', content: 'Hello!' },
+  { id: 2, sender: 'AI', content: 'Hi there! How can I help you today?' }
+])
+
+const sendMessage = () => {
+  if (message.value.trim()) {
+    messages.value.push({
+      id: messages.value.length + 1,
+      sender: 'User',
+      content: message.value
+    })
+    message.value = ''
   }
-});
-
-const reconnect = () => {
-  close();
-  useSSE({
-    url: 'http://localhost:3000/sse',
-    autoReconnect: false
-  });
-};
+}
 </script>
 
 <style scoped>

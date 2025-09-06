@@ -1,16 +1,18 @@
 @import 'tailwindcss'
 
 :root {
-    --color-primary:#002234;
+    --color-primary: #002234;
+    --color-secondary: #00ff34;
+    --color-accent: #ff2234;
 }
 
-@theme{
-    --color-primary-red:#0022ff;
-    --color-primary-green:#00ff34;
-    --color-primary-blue:#ff2234;
+@theme {
+    --color-primary-red: #0022ff;
+    --color-primary-green: #00ff34;
+    --color-primary-blue: #ff2234;
 }
 
-@utility miracle-btn-*{
+@utility miracle-btn-* {
     background-color: --value(--color-primary-*);
 }
 
@@ -18,7 +20,35 @@
         @apply bg-blue-500 w-[200px] h-[100px] flex justify-center items-center text-red-600;
     } */
 
-
 .miracle-btn {
     @apply bg-blue-500 w-[200px] h-[100px] flex justify-center items-center text-red-600;
+}
+
+/* Light theme */
+:root {
+    --color-bg: #ffffff;
+    --color-text: #333333;
+    --color-border: #e5e5e5;
+}
+
+/* Dark theme */
+.dark {
+    --color-bg: #1a1a1a;
+    --color-text: #f0f0f0;
+    --color-border: #444444;
+}
+
+/* Apply theme colors */
+#app,
+.app-layout,
+.n-layout,
+.n-layout-header,
+.n-layout-sider,
+.n-layout-content,
+.n-layout-footer,
+.n-menu,
+.n-button {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    border-color: var(--color-border);
 }
