@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from '../contexts/ThemeContext';
 import { useI18n } from '../contexts/I18nContext';
+import CustomThemeEditor from '../components/CustomThemeEditor';
 import './Settings.css';
 
 const Settings: React.FC = () => {
   const { t } = useTranslation();
-  const { themes, currentTheme, setTheme, createCustomTheme } = useTheme();
+  const { themes, currentTheme, setTheme } = useTheme();
   const { language, changeLanguage } = useI18n();
+  const [showCustomThemeEditor, setShowCustomThemeEditor] = useState(false);
 
   const handleThemeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setTheme(e.target.value);
@@ -15,6 +17,10 @@ const Settings: React.FC = () => {
 
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     changeLanguage(e.target.value);
+  };
+
+  const handleCustomThemeClick = () => {
+    setShowCustomThemeEditor(true);
   };
 
   return (
@@ -35,10 +41,7 @@ const Settings: React.FC = () => {
         </div>
         
         <div className="setting-item">
-          <button onClick={() => {
-            // This would open a custom theme editor in a real app
-            alert(t('settings.customThemeAlert', 'Custom theme editor would open here'));
-          }}>
+          <button onClick={handleCustomThemeClick}>
             {t('settings.createCustomTheme')}
           </button>
         </div>
@@ -70,6 +73,10 @@ const Settings: React.FC = () => {
           </label>
         </div>
       </div>
+      
+      {showCustomThemeEditor && (
+        <CustomThemeEditor onClose={() => setShowCustomThemeEditor(false)} />
+      )}
     </div>
   );
 };

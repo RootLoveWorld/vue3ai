@@ -6,3 +6,6 @@ export * from './gsap';
 
 // Export animated document preview
 export { default as AnimatedDocumentPreview } from './AnimatedDocumentPreview';
+
+// Export custom theme editor
+export { default as CustomThemeEditor } from './CustomThemeEditor';
